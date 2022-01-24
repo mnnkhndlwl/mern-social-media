@@ -1,28 +1,3 @@
-{
-  "name": "api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mnnkhndlwl/social-media-nodejs-api.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mnnkhndlwl/social-media-nodejs-api/issues"
-  },
-  "homepage": "https://github.com/mnnkhndlwl/social-media-nodejs-api#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^14.2.0",
-    "express": "^4.17.2",
-    "helmet": "^5.0.1",
-    "mongoose": "^6.1.7",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:713ff387bc57e605e6b8398bd2f1cfbde66081728242b6d2e5899ca449b0b9d9
+size 659
