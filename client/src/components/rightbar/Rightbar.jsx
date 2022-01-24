@@ -6,16 +6,18 @@ import Online from "../online/Online";
 
 export default function Rightbar({profile}) { //taking our profile prop 
 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER; //to use url inside .env
+
   const HomeRightbar = () => {
     return (
       <>
       <div className="birthdayContainer">
-      <img className="birthdayImg" src="assets/gift.png" alt="" />
+      <img className="birthdayImg" src={`${PF}gift.png`} alt="" />
           <span className="birthdayText">
             <b>Manan Khandelwal</b> and <b>3 other friends</b> have a birhday today.
           </span>
       </div>
-      <img src="./assets/ad.jpg" alt="" className="rightbarAd" />
+      <img src={`${PF}ad.jpg `}alt="" className="rightbarAd" />
       <h4 className="rightbarTitle">Online Friends</h4>
       <ul className="rightbarFriendList">
       {Users.map((u) => (   //for each user i'm gonna return online component and passing our user
@@ -48,7 +50,7 @@ export default function Rightbar({profile}) { //taking our profile prop
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
             <img
-              src="assets/person/1.jpg"
+              src={`${PF}person/1.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -56,7 +58,7 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/2.jpg"
+              src={`${PF}person/2.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -64,7 +66,7 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/3.jpg"
+              src={`${PF}person/3.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -72,7 +74,7 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/4.jpg"
+              src="person/4.jpg"
               alt=""
               className="rightbarFollowingImg"
             />
@@ -80,7 +82,7 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/5.jpg"
+              src={`${PF}person/5.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
@@ -88,13 +90,13 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="assets/person/6.jpg"
+              src={`${PF}person/6.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
-          <img src="./assets/ad.jpg" alt="" className="rightbarAd" />
+          <img src={`${PF}ad.jpg `}alt="" className="rightbarAd" />
         </div>
          </>
     );

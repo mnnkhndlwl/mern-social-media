@@ -7,6 +7,8 @@ export default function Post({post}) { //passing our posts
   const [like, setLike] = useState(post.like); 
   const [isLiked,setIsLiked] = useState(false)
 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER; //to use url inside .env
+
   const likeHandler =()=>{
     setLike(isLiked ? like-1 : like+1) //if isLiked true then decrease like otherwise increase like
     setIsLiked(!isLiked) //isLiked is gonna be totally opposite of it's previous value
@@ -35,12 +37,12 @@ export default function Post({post}) { //passing our posts
             <span className="postText">
                 {post?.desc}  {/**using question mark as some posts don't have description */}
             </span>
-            <img className="postImg" src={post.photo} alt="" />
+            <img className="postImg" src={PF + post.photo} alt="" /> {/**using our public folder*/}
         </div>
         <div className="postBottom">
             <div className="postBottomLeft">
-              <img className="likeIcon" src="./assets/like.png" onClick={likeHandler} alt=""></img> {/**on click it goona call likehandler function */}
-              <img className="likeIcon" src="./assets/heart.png" onClick={likeHandler} alt=""></img>
+              <img className="likeIcon" src={`${PF}like.png`} onClick={likeHandler} alt=""></img> {/**on click it goona call likehandler function */}
+              <img className="likeIcon" src={`${PF}heart.png`} onClick={likeHandler} alt=""></img>
               <span className="postLikeCounter">{like} Likes</span> {/**like from use state */}
             </div>
             <div className="postBottomRight">
