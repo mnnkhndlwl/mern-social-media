@@ -26,16 +26,6 @@ export const Users = [
     },
     {
       id:6,
-      profilePicture: "person/8.jfif",
-      username: "Taylor hill",
-    },
-    {
-      id:7,
-      profilePicture: "person/7.jpg",
-      username: "Fuck off",
-    },
-    {
-      id:8,
       profilePicture: "person/6.jpg",
       username: "Harsh",
     },

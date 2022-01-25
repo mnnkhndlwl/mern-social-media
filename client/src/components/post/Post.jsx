@@ -1,12 +1,21 @@
-import {useState} from "react";
+import {useState , useEffect} from "react";
 import { MoreVert } from "@material-ui/icons";
 import "./post.css"
-import {Users} from "../../dummyData" //importing Users from our dummy data
+import axios from "axios";
+import {format} from "timeago.js";
 
 export default function Post({post}) { //passing our posts 
-  const [like, setLike] = useState(post.like); 
+  const [like, setLike] = useState(post.likes.length); 
   const [isLiked,setIsLiked] = useState(false)
+  const [user, setUser] = useState({});
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`users/${post.userId}`); //api se user fetch kiya get user tum dekh sakte ho user route me
+    setUser(res.data); //phir wo user yaha gya
+    };
+    fetchUser();
+  }, [post.userId]); 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER; //to use url inside .env
 
   const likeHandler =()=>{
@@ -21,13 +30,13 @@ export default function Post({post}) { //passing our posts
           <div className="postTopLeft">
             <img
               className="postProfileImg"
-              src={Users.filter((u) => u.id === post?.userId)[0].profilePicture}
+              src={user.profilePicture || PF+"person/6.jpg"}  //if there's no profile picture it gonna provide a default picture from person folder
               alt=""
             />
             <span className="postUsername">
-              {Users.filter((u) => u.id === post?.userId)[0].username} {/**if user id equals to post id then return username from users array in dummydata*/}
+              {user.username} 
               </span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
                 <MoreVert/>
@@ -37,7 +46,7 @@ export default function Post({post}) { //passing our posts
             <span className="postText">
                 {post?.desc}  {/**using question mark as some posts don't have description */}
             </span>
-            <img className="postImg" src={PF + post.photo} alt="" /> {/**using our public folder*/}
+            <img className="postImg" src={PF + post.img} alt="" /> {/**using our public folder*/}
         </div>
         <div className="postBottom">
             <div className="postBottomLeft">

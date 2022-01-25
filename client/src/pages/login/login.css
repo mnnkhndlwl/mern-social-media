@@ -1,11 +1,12 @@
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: #cccccc;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("file:///D:/react/react-social/react-social/login.jpg");
+    background: rgb(58,159,180);
+background: linear-gradient(90deg, rgba(58,159,180,1) 17%, rgba(221,16,206,1) 52%, rgba(252,176,69,1) 100%);
 }
   
   .loginWrapper {
