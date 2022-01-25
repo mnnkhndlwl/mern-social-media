@@ -4,7 +4,7 @@ import "./rightbar.css"
 import { Users } from "../../dummyData"; //importing users from dummydata
 import Online from "../online/Online";
 
-export default function Rightbar({profile}) { //taking our profile prop 
+export default function Rightbar({user}) { //taking our user prop 
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER; //to use url inside .env
 
@@ -35,15 +35,19 @@ export default function Rightbar({profile}) { //taking our profile prop
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">New York</span>
+            <span className="rightbarInfoValue">{user.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Madrid</span>
+            <span className="rightbarInfoValue">{user.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">Single</span>
+            <span className="rightbarInfoValue"> {user.relationship === 1
+                ? "Single"
+                : user.relationship === 1
+                ? "Married"
+                : "-"}</span>
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
@@ -104,8 +108,8 @@ export default function Rightbar({profile}) { //taking our profile prop
   return (
   <div className='rightbar'>
     <div className="rightbarWrapper">
-    {profile ? <ProfileRightbar /> : <HomeRightbar />} {/**when we are at our profile page it gonna see that profile is passing a prop so it will 
-     * show profileRightbar and if we are at our home page it gonna see that home is not passing any component so it gonna call homerightbar
+    {user ? <ProfileRightbar /> : <HomeRightbar />} {/**when we are at our profile page it gonna see that profile is passing a prop so it will 
+     * show profileRightbar and if we are at our home page it gonna see that home is not passing any prop so it gonna call homerightbar
      */}
     </div>
   </div>

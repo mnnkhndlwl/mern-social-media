@@ -10,9 +10,9 @@ export default function Feed({username}) { //this username is gonna decide wheth
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = username 
-      ? await axios.get("posts/timeline/61e7d15c2f187eac9c943dcd");//posts ko fetch karna according to user
-      : await axios.get("posts/timeline/61e7d15c2f187eac9c943dcd");
+      const res = username
+      ? await axios.get("/posts/profile/" + username)
+      : await axios.get("posts/timeline/" + user._id);
     setPosts(res.data);
     };
     fetchPosts();
