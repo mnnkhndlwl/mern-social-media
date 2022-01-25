@@ -74,7 +74,7 @@ export default function Rightbar({profile}) { //taking our profile prop
           </div>
           <div className="rightbarFollowing">
             <img
-              src="person/4.jpg"
+              src={`${PF}person/4.jpg`}
               alt=""
               className="rightbarFollowingImg"
             />

@@ -4,13 +4,15 @@ import Share from "../share/Share";
 import "./feed.css"
 import axios from "axios";
 
-export default function Feed() {
+export default function Feed({username}) { //this username is gonna decide whether we are in profile or homepage
 
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("posts/timeline/61e7d15c2f187eac9c943dcd");//posts ko fetch karna according to user
+      const res = username 
+      ? await axios.get("posts/timeline/61e7d15c2f187eac9c943dcd");//posts ko fetch karna according to user
+      : await axios.get("posts/timeline/61e7d15c2f187eac9c943dcd");
     setPosts(res.data);
     };
     fetchPosts();

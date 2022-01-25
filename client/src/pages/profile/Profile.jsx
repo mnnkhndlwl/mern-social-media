@@ -24,7 +24,7 @@ export default function Profile() {
               />
               <img
                 className="profileUserImg"
-                src={`${PF}person/3.jpg`}
+                src={`${PF}person/6.jpg`}
                 alt=""
               />
             </div>
@@ -34,7 +34,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-        <Feed/> {/**using feed component */}
+        <Feed username="mananupdated"/> {/**using feed component and passing username prop to feed*/}
           {/**using rightbar component */}
          <Rightbar profile/> {/**now this profile prop is gonna indicate whether our rightbar is in profile page or home page */}
           </div>

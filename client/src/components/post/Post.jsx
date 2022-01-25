@@ -3,6 +3,7 @@ import { MoreVert } from "@material-ui/icons";
 import "./post.css"
 import axios from "axios";
 import {format} from "timeago.js";
+import { Link } from "react-router-dom";
 
 export default function Post({post}) { //passing our posts 
   const [like, setLike] = useState(post.likes.length); 
@@ -28,11 +29,13 @@ export default function Post({post}) { //passing our posts
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`profile/${user.username}`}> {/**To go to profile page on clicking user profileimg */}
             <img
               className="postProfileImg"
               src={user.profilePicture || PF+"person/6.jpg"}  //if there's no profile picture it gonna provide a default picture from person folder
               alt=""
             />
+            </Link>
             <span className="postUsername">
               {user.username} 
               </span>
