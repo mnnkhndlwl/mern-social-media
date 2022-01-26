@@ -1,14 +1,21 @@
-import {useState , useEffect} from "react";
+import {useState , useEffect,useContext} from "react";
 import { MoreVert } from "@material-ui/icons";
 import "./post.css"
 import axios from "axios";
 import {format} from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+
 
 export default function Post({post}) { //passing our posts 
   const [like, setLike] = useState(post.likes.length); 
   const [isLiked,setIsLiked] = useState(false)
   const [user, setUser] = useState({});
+  const { user: currentUser } = useContext(AuthContext); //use this user as current user
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -19,10 +26,13 @@ export default function Post({post}) { //passing our posts
   }, [post.userId]); 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER; //to use url inside .env
 
-  const likeHandler =()=>{
-    setLike(isLiked ? like-1 : like+1) //if isLiked true then decrease like otherwise increase like
-    setIsLiked(!isLiked) //isLiked is gonna be totally opposite of it's previous value
-  }
+  const likeHandler = () => {
+    try {
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+    } catch (err) {}
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="post">
@@ -31,13 +41,17 @@ export default function Post({post}) { //passing our posts
           <div className="postTopLeft">
             <Link to={`profile/${user.username}`}> {/**To go to profile page on clicking user profileimg */}
             <img
-              className="postProfileImg"
-              src={user.profilePicture || PF+"person/6.jpg"}  //if there's no profile picture it gonna provide a default picture from person folder
-              alt=""
-            />
+                className="postProfileImg"
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "person/6.jpg"
+                }
+                alt=""
+              />
             </Link>
             <span className="postUsername">
-              {user.username} 
+              {currentUser.username} 
               </span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
