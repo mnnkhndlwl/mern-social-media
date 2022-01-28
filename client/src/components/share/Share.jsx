@@ -19,7 +19,7 @@ export default function Share() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const newPost = {
+    const newPost = {   //creating new post
       userId: user._id,
       desc: desc.current.value,
     };
@@ -71,7 +71,7 @@ export default function Share() {
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
               <span className="shareOptionText">Photo or Video</span>
-              <input
+              <input //input for file
                 style={{ display: "none" }}
                 type="file"
                 id="file"
