@@ -62,7 +62,7 @@ export default function Share() {
         <hr className="shareHr" />
         {file && (
           <div className="shareImgContainer">
-            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" /> {/**creating a pseudo url to see our image */}
             <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
           </div>
         )}
