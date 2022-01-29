@@ -10,7 +10,7 @@ export default function Home() {
       <Topbar /> {/**using our topbar component */}
       <div className="homeContainer">
         <Sidebar /> {/**using our sidebar component */}
-        <Feed/> {/**using feed component */}
+        <Feed /> {/**using feed component */}
          <Rightbar/> {/**using rightbar component */}
          
       </div>

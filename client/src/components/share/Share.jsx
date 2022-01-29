@@ -24,18 +24,18 @@ export default function Share() {
       desc: desc.current.value,
     };
     if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
+      const data = new FormData(); //formdata basically key/value pair me store karta hai
+      const fileName = Date.now() + file.name; //so that users caanot upload file with same name
       data.append("name", fileName);
       data.append("file", file);
-      newPost.img = fileName;
+      newPost.img = fileName; //adding image to our newpost for this image i'm gonna indicate my file path which is filename
       console.log(newPost);
       try {
         await axios.post("/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await axios.post("/posts", newPost); //post to our api
       window.location.reload();
     } catch (err) {}
   };
