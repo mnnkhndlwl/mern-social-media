@@ -31,12 +31,12 @@ router.get("/:userId", async (req, res) => {
 
 // get conv includes two userId
 
-router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
+router.get("/find/:firstUserId/:secondUserId", async (req, res) => { 
   try {
     const conversation = await Conversation.findOne({
-      members: { $all: [req.params.firstUserId, req.params.secondUserId] },
+      members: { $all: [req.params.firstUserId, req.params.secondUserId] }, //all members shold include our both users
     });
-    res.status(200).json(conversation)
+    res.status(200).json(conversation) //json format me data bhejna
   } catch (err) {
     res.status(500).json(err);
   }
